@@ -5,7 +5,7 @@ GeoImage is a simple tool that reads metadata from an image and prints the addre
 
 ## Requirements
 
-To install the nececary requirements in order to use GeoImage type:
+To install the necessary requirements in order to use GeoImage type:
 ```bash
 # pip install -r requirements.txt
 ```
