@@ -12,8 +12,6 @@ To install the necessary requirements in order to use GeoImage type:
 
 ## Usage
 
-To create a bloom filter, choose an approximate capacity and an acceptable error rate.
-
 ```python
 >>> from geoimage import GeoImage
 >>> locator = GeoImage(filename="image_filename")
