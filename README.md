@@ -1,7 +1,7 @@
 GeoImage
 ========
 
-GeoImage is a simple tool that reads metadata from an image and prints the address using google's reverse geocoding api
+GeoImage is a simple library that reads metadata from an image and prints the address using google's reverse geocoding api
 
 ## Requirements
 
@@ -14,10 +14,17 @@ To install the necessary requirements in order to use GeoImage type:
 
 ```python
 >>> from geoimage import GeoImage
->>> locator = GeoImage(filename="image_filename")
->>> locator.get_info()
+>>> with GeoImage('sigur_ros.jpg') as gi:
+...     print gi.address
+...     print gi.coordinates
+... 
+Trg Leona Štuklja 5, 2000 Maribor, Slovenia
+('46.55915277777777777777777778', '15.64904083333333333333333333')
+>>> gi = GeoImage('sigur_ros.jpg')
+>>> print gi.address
+Trg Leona Štuklja 5, 2000 Maribor, Slovenia
+>>> 
 ```
 
-Additionaly you can pass image filename to the get_info method if you want to extract data from different image
 
 
