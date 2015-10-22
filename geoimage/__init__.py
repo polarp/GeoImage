@@ -49,7 +49,7 @@ class GeoCode(object):
             return None
         
         data = request.json()
-        if len(data['results']) == len(list()):
+        if not any(data['results']):
             return None
         
         return data['results'][0]['formatted_address']
@@ -72,7 +72,7 @@ class Image(object):
         return latitude, longitude
 
     def _parse_coordinates(self, coordinates):
-        temp = coordinates[1:-1].replace(" ","").split(',')
+        temp = coordinates[1:-1].replace(' ','').split(',')
         degrees = Decimal(temp[0])
         minutes = Decimal(temp[1])
         seconds = Decimal(temp[2].split('/')[0]) / Decimal(temp[2].split('/')[1])
