@@ -1,7 +1,7 @@
 GeoImage
 ========
 
-GeoImage is a simple library that reads metadata from an image and prints the address using google's reverse geocoding api
+GeoImage is a simple library that reads image metadata and extracts the address and the coordinates using google's reverse geocoding api
 
 ## Requirements
 
