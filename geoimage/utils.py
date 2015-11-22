@@ -18,19 +18,17 @@ class Image(object):
     
     @property
     def latitude(self):
-        tags = self.tags.copy()
-        if tags.get('GPS GPSLatitude') is None:
+        if self.tags.get('GPS GPSLatitude') is None:
             raise CoordinatesNotFound('Image does not contain coordinates info!')
         
-        return self._parse_coordinates(str(tags.get('GPS GPSLatitude')))
+        return self._parse_coordinates(str(self.tags.get('GPS GPSLatitude')))
         
     @property
     def longitude(self):
-        tags = self.tags.copy()
-        if tags.get('GPS GPSLongitude') is None:
+        if self.tags.get('GPS GPSLongitude') is None:
             raise CoordinatesNotFound('Image does not contain coordinates info!')
         
-        return self._parse_coordinates(str(tags.get('GPS GPSLongitude')))        
+        return self._parse_coordinates(str(self.tags.get('GPS GPSLongitude')))        
 
     def _parse_coordinates(self, coordinates):
         temp = coordinates[1:-1].replace(' ','').split(',')
@@ -50,9 +48,9 @@ class GeoCode(object):
         self.api_key = api_key
 
     def fetch_address(self, coordinates):
-        url = self.api_url + ','.join(coordinates)
+        url = '{}{}'.format(self.api_url, ','.join(coordinates))
         if self.api_key is not None:
-            url = url + '&key=' + self.api_key
+            url = '{}&key={}'.format(url, self.api_key)
 
         request = requests.get(url)
         if request.status_code != requests.codes.ok:
